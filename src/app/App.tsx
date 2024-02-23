@@ -6,37 +6,37 @@ import { getInstance } from "voximplant-websdk";
 
 const sdk = getInstance();
 
-const login = async (isJoin?: boolean) => {
+const login = async () => {
   try {
     await sdk.init({
       localVideoContainerId: "localvideo",
       remoteVideoContainerId: "remotevideo",
     });
     console.log("SDK is ready!");
-    sdk.showLocalVideo(true);
     try {
       await sdk.connect();
       console.log("Connected");
     } catch (e) {
       console.log("Connection failed!");
     }
-    try {
-      await sdk.login(
-        `test${isJoin ? "1" : ""}@test.jock96.n8.voximplant.com`,
-        "1772018p"
-      );
-      console.log("Logged in!");
-    } catch (e: any) {
-      console.log("Login failure!");
-    }
   } catch (e) {
     console.log("SDK init failure!");
   }
-  console.log("isJoin", isJoin);
 };
 
 const startcall = (isJoin?: boolean) => {
-  login(isJoin).then(() => {
+  login().then(() => {
+    sdk
+      .login(
+        `test${isJoin ? "1" : ""}@test.jock96.n8.voximplant.com`,
+        "1772018p"
+      )
+      .then(() => {
+        console.log("Logged in!");
+      })
+      .catch(() => {
+        console.log("Login failure!");
+      });
     // prepare settings
     const callSettings = {
       number: "myConf",
@@ -47,7 +47,8 @@ const startcall = (isJoin?: boolean) => {
       },
     };
     // pass these settings to the call() method
-    const call = sdk.callConference(callSettings);
+    sdk.callConference(callSettings);
+    sdk.showLocalVideo(true);
   });
 };
 
