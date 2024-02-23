@@ -33,22 +33,22 @@ const startcall = (isJoin?: boolean) => {
       )
       .then(() => {
         console.log("Logged in!");
+        // prepare settings
+        const callSettings = {
+          number: "myConf",
+          simulcast: true,
+          video: {
+            sendVideo: true,
+            receiveVideo: true,
+          },
+        };
+        // pass these settings to the call() method
+        sdk.callConference(callSettings);
+        sdk.showLocalVideo(true);
       })
       .catch(() => {
         console.log("Login failure!");
       });
-    // prepare settings
-    const callSettings = {
-      number: "myConf",
-      simulcast: true,
-      video: {
-        sendVideo: true,
-        receiveVideo: true,
-      },
-    };
-    // pass these settings to the call() method
-    sdk.callConference(callSettings);
-    sdk.showLocalVideo(true);
   });
 };
 
