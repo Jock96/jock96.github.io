@@ -27,7 +27,6 @@ const login = async () => {
       console.log("Logged in!");
     } catch (e: any) {
       console.log("Login failure!");
-      console.log("Er:", e);
     }
   } catch (e) {
     console.log("SDK init failure!");
@@ -60,6 +59,7 @@ export const App: FC = () => {
       {/* <RouterProvider router={router} /> */}
       <div id="remotevideo"></div>
       <div id="localvideo"></div>
+      {isJoin ? "JOINED" : null}
       <button onClick={join}>join</button>
       <button onClick={startcall}>call</button>
     </div>
