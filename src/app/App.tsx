@@ -43,7 +43,8 @@ const startcall = (isJoin?: boolean) => {
           },
         };
         // pass these settings to the call() method
-        sdk.callConference(callSettings);
+        const call = sdk.callConference(callSettings);
+        call.sendVideo(true);
         sdk.showLocalVideo(true);
       })
       .catch(() => {
