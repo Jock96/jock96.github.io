@@ -22,6 +22,7 @@
     "react-virtualized-auto-sizer": "^1.0.21",
     "react-window": "^1.8.10",
     "typescript": "^4.4.2",
+    "voximplant-websdk": "^4.6.3-2641",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -29,8 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy" : "yarn run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

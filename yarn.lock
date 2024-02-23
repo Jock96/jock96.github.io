@@ -9452,6 +9452,11 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
+voximplant-websdk@^4.6.3-2641:
+  version "4.6.3-2641"
+  resolved "https://registry.yarnpkg.com/voximplant-websdk/-/voximplant-websdk-4.6.3-2641.tgz#2011e7ab661585c8d29b2c89788aeb842d274893"
+  integrity sha512-PD2qxiguJd9sL6Ale0pvEcttvqlgoyRAvQN5/Kr+g6YIv3l0ZL9XyRhENgfEJgbYjKFDVXNU0h0j0x01/k0YAA==
+
 w3c-hr-time@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.2.tgz#0a89cdf5cc15822df9c360543676963e0cc308cd"
