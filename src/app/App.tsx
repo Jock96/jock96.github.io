@@ -6,9 +6,7 @@ import { getInstance } from "voximplant-websdk";
 
 const sdk = getInstance();
 
-let isJoin = false
-
-const login = async () => {
+const login = async (isJoin?: boolean) => {
   try {
     await sdk.init({
       localVideoContainerId: "localvideo",
@@ -31,10 +29,11 @@ const login = async () => {
   } catch (e) {
     console.log("SDK init failure!");
   }
+  console.log("isJoin", isJoin)
 };
 
-const startcall = () => {
-  login();
+const startcall = (isJoin?: boolean) => {
+  login(isJoin);
   // prepare settings
   const callSettings = {
     number: "myConf",
@@ -49,8 +48,7 @@ const startcall = () => {
 };
 
 const join = () => {
-  isJoin = true
-  startcall()
+  startcall(true)
 }
 
 export const App: FC = () => {
@@ -59,9 +57,8 @@ export const App: FC = () => {
       {/* <RouterProvider router={router} /> */}
       <div id="remotevideo"></div>
       <div id="localvideo"></div>
-      {isJoin ? "JOINED" : null}
       <button onClick={join}>join</button>
-      <button onClick={startcall}>call</button>
+      <button onClick={() => startcall()}>call</button>
     </div>
   );
 };
