@@ -53,22 +53,17 @@ const startcall = (isJoin?: boolean) => {
 
           // alternatively to this, you can use the endpoint to render local video manually
           // uncomment this to use the endpoint
-          e.call.on(CallEvents.EndpointAdded, (e) => {
+          e.call.on(CallEvents.EndpointAdded, (e: any) => {
               const container = document.createElement('div')
               container.id = e.endpoint.id
               document.getElementById("remotevideo")?.appendChild(container)
           
               // subscribe to the remote media added event
-              e.endpoint.on(EndpointEvents.RemoteMediaAdded, (e) => {
+              e.endpoint.on(EndpointEvents.RemoteMediaAdded, (e: any) => {
                   const container = document.getElementById(e.endpoint.id);
                   e.mediaRenderer.render(container);
               });
-              e.endpoint.on(EndpointEvents.RemoteMediaRemoved, (e) => {});
-              e.endpoint.on(EndpointEvents.RemoteMediaUpdated, (e) => {
-                  // this event is triggered when user replaces video with screen sharing and vice versa
-              });
           });
-          e.call.on(CallEvents.EndpointRemoved, (e) => {});
         });
       })
       .catch(() => {
