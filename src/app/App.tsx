@@ -41,6 +41,7 @@ const startcall = (isJoin?: boolean) => {
             sendVideo: true,
             receiveVideo: true,
           },
+          H264first: true
         };
         // pass these settings to the call() method
         const call = sdk.callConference(callSettings);
@@ -65,6 +66,7 @@ export const App: FC = () => {
       <div id="localvideo" />
       <button onClick={join}>join</button>
       <button onClick={() => startcall()}>call</button>
+      {/* <button onClick={}></button> */}
     </div>
   );
 };
