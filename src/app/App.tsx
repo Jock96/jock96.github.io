@@ -25,8 +25,8 @@ const login = async () => {
 };
 
 const startcall = (isJoin?: boolean) => {
-  login().then(() => {
-    sdk
+  return login().then(() => {
+    return sdk
       .login(
         `test${isJoin ? "1" : ""}@test.jock96.n8.voximplant.com`,
         "1772018p"
@@ -45,26 +45,10 @@ const startcall = (isJoin?: boolean) => {
         };
         // pass these settings to the call() method
         const call = sdk.callConference(callSettings);
-        call.sendVideo(true);
+
         sdk.showLocalVideo(true);
 
-        call.addEventListener(CallEvents.Connected, (e) => {
-          sdk.showLocalVideo(true);
-
-          // alternatively to this, you can use the endpoint to render local video manually
-          // uncomment this to use the endpoint
-          e.call.on(CallEvents.EndpointAdded, (e: any) => {
-              const container = document.createElement('div')
-              container.id = e.endpoint.id
-              document.getElementById("remotevideo")?.appendChild(container)
-          
-              // subscribe to the remote media added event
-              e.endpoint.on(EndpointEvents.RemoteMediaAdded, (e: any) => {
-                  const container = document.getElementById(e.endpoint.id);
-                  e.mediaRenderer.render(container);
-              });
-          });
-        });
+        return call
       })
       .catch(() => {
         console.log("Login failure!");
@@ -72,8 +56,12 @@ const startcall = (isJoin?: boolean) => {
   });
 };
 
-const join = () => {
-  startcall(true);
+const join = async () => {
+  const call = await startcall(true);
+
+  if (call) {
+    call.answer()
+  }
 };
 
 export const App: FC = () => {
