@@ -44,7 +44,13 @@ const startcall = (isJoin?: boolean) => {
           H264first: true,
         };
         // pass these settings to the call() method
-        const call = sdk.callConference(callSettings);
+
+        let call
+        if (isJoin) {
+          call = sdk.callConference(callSettings);
+        } else {
+          call = sdk.call(callSettings);
+        }
 
         sdk.showLocalVideo(true);
 
