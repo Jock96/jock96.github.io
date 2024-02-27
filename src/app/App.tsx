@@ -45,12 +45,7 @@ const startcall = (isJoin?: boolean) => {
         };
         // pass these settings to the call() method
 
-        let call
-        if (isJoin) {
-          call = sdk.callConference(callSettings);
-        } else {
-          call = sdk.call(callSettings);
-        }
+        const call = sdk.call(callSettings);
 
         sdk.showLocalVideo(true);
 
